@@ -252,9 +252,10 @@ div > h2 {
 	text-align: center;
 	/* border: 30px solid #73AD21; */
   }
-#rightcolumn { 
-	margin-left: 6em;
-	margin-right: 6em;
+#contentCont { 
+	/* margin-left: 6em;
+	margin-right: 6em; */
+	/* margin-top: 3em; */
 	min-height: 600px;
 	height: auto;
     background-color: #6b6b6b;
@@ -262,17 +263,20 @@ div > h2 {
 	/* display:flex; */
 } 
 
+/* Container to put the two sections for even spacing */
 .container-sec{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 }
 
+/* Left container in container-sec that is evenly spaced from right */
 .left-section {
 	width: 500px;
 	padding-top: 5em;
 }
 
+/* Right container in container-sec that is evenly spaced from left */
 .right-section {
 	width: 500px;
 	padding-top: 8em;
@@ -282,3 +286,48 @@ div > h2 {
 	/* text-align: center; */
 }
 
+/* -----------------------CHECK BOOKINGS PAGE--------------------*/
+table {
+	width: 90%;
+}
+
+table .contact {
+	margin-left: auto;
+	margin-right: auto;
+  }
+
+table .item-name {
+	text-align: right;
+	vertical-align: top;
+	padding-left: 1em;
+	padding-right: 3em;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+/* td .input-field {
+	margin-left: auto;
+	margin-right: auto;
+} */
+
+form {
+    margin-top: 30px;
+}
+
+form .error-msg {
+    color: #f94449;
+    font-size: 13px;
+    margin: 0px;
+    padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.seat {
+	margin: 0;
+	height: 400px;
+	width: 700px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+  }

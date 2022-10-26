@@ -26,36 +26,17 @@
 <body>
 	<div id="contentCont">
 		<h2>
-			<br>Check bookings:<br>
+			<br>Your Bookings:<br>
 		</h2>
 		<h3>
-			Please provide us with the number your booking is under:
+			Name: <br>
+            Email: <br>
+            Mobile: <br>
 		</h3>
-		<form action="show_post.php" method="post">
-			<table class="contact">
-				<tr class="contact-item">
-					<td class="item-name">
-						<label for="phone">*Phone number:</label>
-					</td>
-					<td class="input-field">
-						<input type="tel" name="phone" id="phone" required>
-						<p class="error-msg" id="error-phone"></p>
-					</td>
-				</tr>
-			</table>
+		<div class="container-sec">
 
-			<br><input type="reset" value="Clear">
-			<br><input type="submit" value="Confirm" href="index.html">
-
-		</form>
-	</div>
-
-	<script type="text/javascript" src="valid.js"></script>
-
+        </div>
+   </div>
 </body>
-
-<script type="text/javascript">
-	document.getElementById("phone").onblur = validPhoneBlurHandler;
-</script>
 
 </html>
