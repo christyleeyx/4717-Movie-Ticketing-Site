@@ -271,6 +271,23 @@ body {
 	margin-top: 30px;
 }
 
+.nowshowing02 {
+	flex: 0 0 auto;
+	width: 100%;
+	height: 287px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.nowshowing02 img{
+	width: 213px;
+	height: 269px;
+	align-self: flex-start;
+	object-fit: cover;
+	padding-top: 10px;
+	padding-left: 30px;
+}
 
 .movie_details{
 	width: 349px;
