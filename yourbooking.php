@@ -1,3 +1,5 @@
+<!-- This is far from done im sorry php is confusing me  -->
+
 <?php
 $conn = mysqli_connect("localhost","root","","mmoviesdb");
 
