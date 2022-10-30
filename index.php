@@ -95,14 +95,16 @@
 <div class="nowshowing00">
 <!-- Flex Column Movie list -->
 	<!-- movie 1 -->
+	<?php
+		$movies = getAllGenres();
+		foreach ($movies as $movie) {
+			?>
 		<div class="nowshowing01">
 			<div class="nowshowing02">
-				<img alt="walter mitty" src="https://m.media-amazon.com/images/M/MV5BMmYwNWZlNzEtNjE4Zi00NzQ4LWI2YmUtOWZhNzZhZDYyNmVmXkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_FMjpg_UX1000_.jpg">
+				<img alt="" src="<?php echo $movie['image'] ?>">
 				<div class="movie_details">
-					<h3 class="movie_title">Paddington 2</h3>
-					<p class="movie_desc">Paddington takes up a job to accumulate enough money 
-					to buy the perfect gift for his aunt on her 100th birthday, 
-					but it gets stolen.</p>
+					<h3 class="movie_title"><?php echo $movie['title'] ?></h3>
+					<p class="movie_desc"><?php echo $movie['description'] ?></p>
 					<button class="book_tickets">Book Tickets</button>
 				</div>
 				<div class="movie_timings">
@@ -117,6 +119,9 @@
 				</div>
 			</div>
 		</div>
+	<?php 
+	}
+	?>
 	<!-- movie 2 -->
 	<!-- <div class="nowshowing01">
 		<div class="nowshowing02">
@@ -164,6 +169,7 @@
 		</div>
 	</div> -->
 </div>
+<script src="script.js"></script> <!-- Link to the javascript file -->
 
 </body>
 
