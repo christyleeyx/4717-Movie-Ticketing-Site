@@ -1,3 +1,5 @@
+<!-- Reference for structure, to be deleted later -->
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,36 +28,27 @@
 <body>
 	<div id="contentCont">
 		<h2>
-			<br>Check bookings:<br>
+			<br>Your Bookings:<br>
 		</h2>
 		<h3>
-			Please provide us with the number your booking is under:
+			Name: <br>
+            Email: <br>
+            Mobile: <br>
 		</h3>
-		<form action="yourbooking.php" method="post">
-			<table class="contact">
-				<tr class="contact-item">
-					<td class="item-name">
-						<label for="phone">*Phone number:</label>
-					</td>
-					<td class="input-field">
-						<input type="tel" name="phone" id="phone" required>
-						<p class="error-msg" id="error-phone"></p>
-					</td>
-				</tr>
-			</table>
-
-			<br><input type="reset" value="Clear">
-			<br><input type="submit" value="Confirm">
-
-		</form>
-	</div>
-
-	<script type="text/javascript" src="valid.js"></script>
-
+		<div class="container-sec-col">
+			<div class="booking-info">
+				<b>
+					Movie Title:
+				</b>
+				<button>
+					1730hrs
+				</button>
+				<b>
+					Seats: A1, A2
+				</b>
+			</div>
+        </div>
+   </div>
 </body>
-
-<script type="text/javascript">
-	document.getElementById("phone").onblur = validPhoneBlurHandler;
-</script>
 
 </html>

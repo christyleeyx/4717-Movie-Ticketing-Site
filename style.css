@@ -264,12 +264,35 @@ div > h2 {
 } 
 
 /* Container to put the two sections for even spacing */
-.container-sec{
+.container-sec-row{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 }
 
+.container-sec-col{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.booking-info{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-left: 3em;
+	margin-right: 3em;
+	margin-top: 3em;
+	border: 5px solid #2d2e37;
+	background-color: #f36868;
+}
+	.booking-info b{
+	color: #333;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:0.5em;
+	margin-bottom: 1em;
+	}
 /* Left container in container-sec that is evenly spaced from right */
 .left-section {
 	width: 500px;
