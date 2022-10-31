@@ -42,26 +42,28 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `image`, `title`, `imdb rating`, `description`, `genre`) VALUES
-(1, 'products/javascript.jpg', 'Learn JavaScript Quickly: A Complete Beginner’s Guide to Learning JavaScript', 15.99, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'books'),
-(2, 'products/node.jpg', 'Node.js: Novice to Ninja 1st Edition', 39.95, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'books'),
-(3, 'products/machine-learning.jpg', 'JavaScript from Beginner to Professional: Learn JavaScript quickly', 34.95, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'books'),
-(4, 'products/coding.jpg', 'Coding All-in-One For Dummies', 19.99, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'books'),
-(5, 'products/star-wars.jpg', 'Star Wars Squadrons', 39.99, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'games'),
-(6, 'products/tank.jpg', 'M4 Tank Brigade', 14.95, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'games'),
-(7, 'products/farcry.jpg', 'Far Cry Primal - PC Standard Edition', 34.95, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'games'),
-(8, 'products/batlefield.jpg', 'Battlefield 3 [Download]', 49.99, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'games'),
-(9, 'products/phone-1.jpg', 'SAMSUNG Galaxy S22 Ultra Cell Phone,', 1.136, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'phones'),
-(10, 'products/phone-2.jpg', 'Apple iPhone 12 Pro, 512GB', 919.99, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'phones'),
-(11, 'products/phone-3.jpg', 'Moto G Power | 2021 | 3-Day battery', 160.95, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'phones'),
-(12, 'products/phone-4.jpg', 'Moto G7 Plus | Unlocked | Made for US by Motorola', 201, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'phones'),
-(13, 'products/mic-1.jpg', 'Rode PodMic Cardioid Dynamic Broadcast Microphone', 99, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'microphones'),
-(14, 'products/mic-2.jpg', 'Audio-Technica AT2020 Cardioid', 99, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'microphones'),
-(15, 'products/mic-3.jpg', 'Elgato Wave:3 - Premium Studio Quality USB ', 149.95, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'microphones'),
-(16, 'products/mic-4.jpg', 'Razer Seiren X USB Streaming Microphone: Professional Grade', 59, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'microphones'),
-(17, 'products/tablet-1.jpg', 'SAMSUNG SM-T290NZKAXAR, Galaxy Tab A 8.0 32 GB', 99, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'tablets'),
-(18, 'products/tablet-2.jpg', 'Lectrus Tablet+Customized Cover, Android 9.0', 119, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'tablets'),
-(19, 'products/tablet-3.jpg', '10 Inch Tablet and Tablet Case Bundle, Android 9.0 Tablet 2GB RAM', 149.95, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'tablets'),
-(20, 'products/tablet-4.jpg', 'Lenovo IdeaTab A2109 9-Inch 16 GB Tablet', 199, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eligendi quas eius quod.', 'tablets');
+(1, 'assets/posters/20th century girl.jpg', '20th Century Girl', 7.3, 'In 1999, a teen with a heart of gold begins keeping close tabs on a popular classmate as a favor to her smitten best friend', 
+    'foreign'),
+(2, 'assets/posters/avatar 2.jpeg', 'Avatar: The Way of Water', 8.5, 'Jake Sully lives with his newfound family formed on the planet of Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Navi race to protect their planet.', 
+    'action' ),
+(3, 'assets/posters/barbarian.jpg', 'Barbarian', 7.2, 'A woman staying at an Airbnb discovers that the house she has rented is not what it seems.', 
+    'horror'),
+(4, 'assets/posters/black adam.jpg', 'Black Adam', 7.1, 'Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods - and imprisoned just as quickly - Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.', 
+    'action'),
+(5, 'assets/posters/decision to leave.jpg', 'Decision to Leave', 7.3, 'A detective investigating a death in the mountains meets the mysterious wife in the course of his dogged sleuthing.', 
+    'foreign'),
+(6, 'assets/posters/knock at the cabin.jpg', 'Knock at the Cabin', 5.6, 'While vacationing, a girl and her parents are taken hostage by armed strangers who demand that the family make a choice to avert the apocalypse.', 
+    'horror'),
+(7, 'assets/posters/lyle lyle crocodile.jpg', 'Lyle, Lyle, Crocodile', 6.4, 'Feature film based on the children book about a crocodile that lives in New York City.', 
+    'animation' ),
+(8, 'assets/posters/smile.jpg', 'Smile', 6.9, 'After witnessing a bizarre, traumatic incident involving a patient, Dr. Rose Cotter starts experiencing frightening occurrences that she cannot explain. Rose must confront her troubling past in order to survive and escape her horrifying new reality.', 
+    'horror'),
+(9, 'assets/posters/the gools.jpg', 'The Gools', 6.0, 'After learning to protect a truce among a community of animals, three young goats embark on an adventurous journey to keep a ceasefire intact throughout their society.', 
+    'animation'),
+(10, 'assets/posters/the woman king.jpg', 'The Woman King', 6.8, 'A historical epic inspired by true events that took place in The Kingdom of Dahomey, one of the most powerful states of Africa in the 18th and 19th centuries.', 
+    'action'),
+(11, 'assets/posters/wendell and wild.jpg', 'Wendell and Wild', 6.7, 'Two scheming demon brothers, Wendell and Wild, enlist the aid of 13-year-old Kat Elliot to summon them to the Land of the Living.', 
+    'animation' );
 
 --
 -- Indexes for dumped tables

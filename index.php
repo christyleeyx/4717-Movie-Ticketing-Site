@@ -82,12 +82,12 @@
 <div class="nowshowing_filter">
 	<h2 class="nowshowing_title">Now Showing</h2>
 <!-- filters -->
-	<select name="genres" id="genres">
+	<select name="movies" id="movies">
 		<option value="">All Genres</option>
-		<option value="books">Action</option>
-		<option value="games">Horror</option>
-		<option value="tablets">Animation</option>
-		<option value="phones">Foreign</option>
+		<option value="action">Action</option>
+		<option value="horror">Horror</option>
+		<option value="animation">Animation</option>
+		<option value="foreign">Foreign</option>
 	</select>
 </div>
 
@@ -122,52 +122,6 @@
 	<?php 
 	}
 	?>
-	<!-- movie 2 -->
-	<!-- <div class="nowshowing01">
-		<div class="nowshowing02">
-			<img alt="walter mitty" src="https://m.media-amazon.com/images/M/MV5BN2M3Y2NhMGYtYjUxOS00M2UwLTlmMGUtYzY4MzFlNjZkYzY2XkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_FMjpg_UX1000_.jpg">
-			<div class="movie_details">
-				<h3 class="movie_title">Barbarian</h3>
-				<p class="movie_desc">A young woman discovers the rental home she booked is already 
-					occupied by a stranger. Against her better judgment, she decides to spend the night 
-					but soon discovers there's a lot more to fear than just an unexpected house guest.</p>
-				<button class="book_tickets">Book Tickets</button>
-			</div>
-			<div class="movie_timings">
-				<h5 class="movietimings_title">Timings</h5>
-				<div class="timing_buttons">
-					<button class="time_button">11:15 am</button>
-					<button class="time_button">12:45 pm</button>
-					<button class="time_button">1:15 pm</button>
-					<button class="time_button">5:50 pm</button>
-					<button class="time_button">9:00 pm</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- movie 3 -->
-	<!-- <div class="nowshowing01">
-		<div class="nowshowing02">
-			<img alt="walter mitty" src="https://m.media-amazon.com/images/M/MV5BMDU2ZmM2OTYtNzIxYy00NjM5LTliNGQtN2JmOWQzYTBmZWUzXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg">
-			<div class="movie_details">
-				<h3 class="movie_title">Bullet Train</h3>
-				<p class="movie_desc">Ladybug is an unlucky assassin who's determined 
-					to do his job peacefully after one too many gigs has gone off the rails. 
-					Fate, however, may have other plans as his latest mission -- on the world's fastest train.</p>
-				<button class="book_tickets">Book Tickets</button>
-			</div>
-			<div class="movie_timings">
-				<h5 class="movietimings_title">Timings</h5>
-				<div class="timing_buttons">
-					<button class="time_button">11:15 am</button>
-					<button class="time_button">12:45 pm</button>
-					<button class="time_button">1:15 pm</button>
-					<button class="time_button">5:50 pm</button>
-					<button class="time_button">9:00 pm</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
 </div>
 <script src="script.js"></script> <!-- Link to the javascript file -->
 

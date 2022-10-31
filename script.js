@@ -1,10 +1,10 @@
-let selectMenu = document.querySelector("#genres");
+let selectMenu = document.querySelector("#movies");
 // let genre = document.querySelector(".right h2");
 let container = document.querySelector(".nowshowing00");
 
 selectMenu.addEventListener("change", function(){
 	let genreName = this.value;
-	genere.innerHTML = this[this.selectedIndex].text;  
+	// genre.innerHTML = this[this.selectedIndex].text;  
 
 	let http = new XMLHttpRequest();
 	http.onreadystatechange = function(){

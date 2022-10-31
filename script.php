@@ -5,9 +5,10 @@
 		$genre = $_POST['genre'];
 
 		if($genre === ""){
-			$genre = getAllGenres();
+			$movies = getAllGenres();
 		}else{
-			$genre = getMoviesByGenre($genre);
+			$movies = getMoviesByGenre($genre);
 		}
-		echo json_encode($genre);
+		// convert $products to a json format, echo statement sends to the javascript file server requests
+		echo json_encode($movies);
 	}
