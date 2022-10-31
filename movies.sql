@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `movies` (
-  `id` int NOT NULL,
+  `movie_id` int NOT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `imdb rating` float NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `movies` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `movies` (`id`, `image`, `title`, `imdb rating`, `description`, `genre`) VALUES
+INSERT INTO `movies` (`movie_id`, `image`, `title`, `imdb rating`, `description`, `genre`) VALUES
 (1, 'assets/posters/20th century girl.jpg', '20th Century Girl', 7.3, 'In 1999, a teen with a heart of gold begins keeping close tabs on a popular classmate as a favor to her smitten best friend', 
     'foreign'),
 (2, 'assets/posters/avatar 2.jpeg', 'Avatar: The Way of Water', 8.5, 'Jake Sully lives with his newfound family formed on the planet of Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Navi race to protect their planet.', 

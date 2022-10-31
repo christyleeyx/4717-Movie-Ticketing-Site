@@ -105,7 +105,7 @@
 				<div class="movie_details">
 					<h3 class="movie_title"><?php echo $movie['title'] ?></h3>
 					<p class="movie_desc"><?php echo $movie['description'] ?></p>
-					<button class="book_tickets">Book Tickets</button>
+					<a href="booking.php?id=<?php echo $movie['movie_id'] ?>"><button class="book_tickets">Book Tickets</button></a>
 				</div>
 				<div class="movie_timings">
 					<h5 class="movietimings_title">Timings</h5>
