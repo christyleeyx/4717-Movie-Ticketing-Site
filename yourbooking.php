@@ -8,9 +8,6 @@ echo 'Error: Could not connect to database.  Please try again later.';
 exit;
 }
 
-$sql = "SELECT uname, email, phone FROM customer ORDER BY phone";
-if (!$result = mysqli_query($conn, $sql)) { echo "Failed to retrieve information". mysqli_error($conn); }
-$prices = array();
 // while ($row = $result->fetch_assoc()){
 // 	$sales[] = $row;
 // }
@@ -32,7 +29,6 @@ $prices = array();
 // $best=$row['productName'];
 // $popular=$row['productCategory'];
 
-$conn -> close();	
 
 ?>
 
@@ -67,30 +63,62 @@ $conn -> close();
 			<br>Your Bookings:<br>
 		</h2>
 		<?php 
-			if(!empty($_POST['customer'])) {
-				foreach ($_POST['customer'] as $phone) {
-					if($phone == "phone"){
-						echo "<table border='0' cellspacing='2' style='width:50%' align='center'>";
-						echo "<tr>";
-						echo "<td><b>Name</b></td>";
-						echo "<td><b>'.$uname.'</b></td>";
-						echo "</tr>";
-						echo '<tr>';
-						echo '<td><b>Email<b></td>';
-						echo '<td>'.$email.'</td>';
-						echo '</tr>';
-						echo '<td><b>Phone number<b></td>';
-						echo '<td>'.phone.'</td>';
-						echo '<td>'.$singleCQty+$doubleCQty.'</td>';
-						echo '</tr>';
-						echo "</table><br>";
-					} else {
-						$msg = "Phone number has not booked anything yet";
-							echo "<script type='text/javascript'>alert('$msg');window.location.href='checkbooking.html';</script>";
-					}
-	
+			$sqlcus = "SELECT uname, email, phone FROM customer";
+		
+			if (!$result = mysqli_query($conn, $sqlcus)) 
+				{ echo "Failed to retrieve information". mysqli_error($conn); }
+			$result = $conn->query($sqlcus);
+			$phone = $_POST['phone'];
+			if ($result->num_rows > 0) {
+			// output data of each row
+				while($row = $result->fetch_assoc()) {
+					if ($phone == $row["phone"]) 
+						{echo "<h4>	Name: " . $row["uname"]. " <br> 
+									Email: " . $row["email"]. "<br> 
+									Phone number: " . $row["phone"]. " 
+							  </h4> ";}				
+					else {
+						echo "data is not input.";	
+						}
 				}
-			}	
+			} else {
+			echo "0 results";
+			}
+
+			$queryuserid = "SELECT user_ID FROM `orders` WHERE (phone='$phone')";
+		    $queryorder = "SELECT mv.title, sh.showdate, sh.showtiming, ss.seat
+			FROM `shows` sh
+			INNER JOIN ( SELECT show_ID FROM `order` WHERE user_ID=$queryuserid ) o
+			  ON sh.show_ID = o.show_ID
+			INNER JOIN `movie` mv
+			  ON sh.movie_ID = mv.movie_ID
+			INNER JOIN `show_seat` ss
+			  ON sh.show_Id = ss.show_ID
+			";
+			
+			$resultorder = mysqli_query($conn, $queryorder);
+			$bookings = mysqli_fetch_all($resultorder, MYSQLI_ASSOC);
+			mysqli_free_result($resultorder);
+	
+			// $sqlord = "SELECT uname, email, phone FROM orders";
+		
+			// if (!$result2 = mysqli_query($conn, $sqlord)) 
+			// 	{ echo "Failed to retrieve information". mysqli_error($conn); }
+			// $result2 = $conn->query($sqlord);
+			// $phone = $_POST['phone'];
+			// if ($result->num_rows > 0) {
+			// // output data of each row
+			// 	while($row = $result->fetch_assoc()) {
+			// 		if ($phone == $row["phone"]) 
+
+
+			// $sqlcustorder = "SELECT orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+			// FROM ((Orders
+			// INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+			// INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+
+			$conn -> close();	
+
 			?>
 
 			</div>

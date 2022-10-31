@@ -401,6 +401,13 @@ div > h2 {
 	/* display:flex; */
 } 
 
+/* customer info in your bookings */
+h4 {
+	margin-top: 2em;
+	margin-left: 4em;
+	color: rgb(206, 248, 255);
+}
+
 /* Container to put the two sections for even spacing */
 .container-sec-row{
 	display: flex;
