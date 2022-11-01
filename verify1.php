@@ -25,7 +25,7 @@ if ((!$_POST['submit'])) {
 if (isset($_POST['submit'])) {
 
     // $qry = "INSERT INTO temp_bookingtable(`temp_index`, `movie_id`, `bookingtheatre`, `bookingtype`, `bookingdate`, `bookingtime`, `ORDERID`)VALUES ('1', '$movie_id','$theatre','$type','$date','$time','$order')";
-    $qry = "UPDATE temp_bookingtable SET movie_id = '$movie_id', bookingtheatre = '$theatre', bookingtype = '$theatre', bookingdate = '$date', bookingtime = '$time', ORDERID = '$order' WHERE temp_index = 1;";
+    $qry = "UPDATE temp_bookingtable SET movie_id = '$movie_id', bookingtheatre = '$theatre', bookingtype = '$type', bookingdate = '$date', bookingtime = '$time', ORDERID = '$order' WHERE temp_index = 1;";
     $result = mysqli_query($con, $qry);
 }
 

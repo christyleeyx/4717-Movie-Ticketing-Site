@@ -51,7 +51,7 @@ $row = mysqli_fetch_assoc($result);
       </div>
     </div>
     <div class="booking-panel-section booking-panel-section4">
-        <div class="title"><img src = "assets/steps/3.png" width=50%></div>
+        <div class="title"><img src = "assets/steps/2.png" width=50%></div>
     
         <div id="wrapper" class="booking-form-container">
             <form action="verify3.php" method="POST">
