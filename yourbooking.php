@@ -1,7 +1,5 @@
-<!-- This is far from done im sorry php is confusing me  -->
-
 <?php
-$conn = mysqli_connect("localhost","root","","mmoviesdb");
+$conn = mysqli_connect("localhost","root","","movies");
 
 if (mysqli_connect_errno()) {
 echo 'Error: Could not connect to database.  Please try again later.';
@@ -18,13 +16,13 @@ exit;
   <script src="https://kit.fontawesome.com/d4fd6bf7f6.js" crossorigin="anonymous"></script>
 
   <header>
-    <a href="index.html" class="logo">
+    <a href="index.php" class="logo">
       <i class="fa-solid fa-meteor fa-xl mainiconcolor"></i>
       <!-- <img src="weblogo.png" class="weblogo" /> -->
       METEOR<span>MOVIES</span>
     </a>
     <b class="topnav">
-      <a href="index.html">Home</a>
+      <a href="index.php">Home</a>
       <a class="active" href="checkbooking.html">Check Booking</a>
       <a href="location.html">Location</a>
     </b>
@@ -61,12 +59,13 @@ exit;
 			} else {
 			echo "0 results";
 			}
+
 		  $queryorder = "SELECT mv.title, sh.showdate, sh.showtiming, ss.seat
 			FROM `shows` sh
-			INNER JOIN ( SELECT show_ID FROM `orders` WHERE phone='87654321' ) o
+			INNER JOIN ( SELECT show_ID FROM `orders` WHERE phone= $phone) o
 			  ON sh.show_ID = o.show_ID
-			INNER JOIN `movie` mv
-			  ON sh.movie_ID = mv.movie_ID
+			INNER JOIN `movies` mv
+			  ON sh.movie_id = mv.movie_id
 			INNER JOIN `show_seat` ss
 			  ON sh.show_ID = ss.show_ID
 			";
