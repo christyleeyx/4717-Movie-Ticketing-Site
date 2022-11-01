@@ -65,17 +65,17 @@ $row = mysqli_fetch_assoc($result);
     
 
       <div class="booking-form-container">
-        <form action="verify.php" method="POST">
-
-
-          <select name="theatre" required>
+        <form action="verify1.php" method="POST">
+        
+        <select name="theatre" required>
             <option value="" disabled selected>THEATRE</option>
-            <option value="main-hall">Main Hall</option>
-            <option value="vip-hall">Gold Class Hall</option>
+            <option value="hall-1">Hall 1</option>
+            <option value="hall-2">Hall 2</option>
+
           </select>
 
-          <select name="type" required>
-            <option value="" disabled selected>TYPE</option>
+        <select name="type" required>
+            <option value="" disabled selected>MOVIE TYPE</option>
             <option value="3d">3D</option>
             <option value="2d">2D</option>
             <option value="imax">IMAX</option>
@@ -100,13 +100,18 @@ $row = mysqli_fetch_assoc($result);
             <option value="24-00">12:00 AM</option>
           </select>
 
+          <input type="hidden" name="movie_id" value="<?php echo $id; ?>">
+
+
+          <!-- <input placeholder="Seats" type="text" name="seats" required>
+
           <input placeholder="First Name" type="text" name="fName" required>
 
           <input placeholder="Last Name" type="text" name="lName">
 
           <input placeholder="Phone Number" type="text" name="pNumber" required>
           <input placeholder="email" type="email" name="email" required>
-          <input type="hidden" name="movie_id" value="<?php echo $id; ?>">
+          <input type="hidden" name="movie_id" value="<?php echo $id; ?>"> -->
 
 
 

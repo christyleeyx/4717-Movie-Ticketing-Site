@@ -20,7 +20,7 @@ selectMenu.addEventListener("change", function(){
 								<div class="movie_details">
 									<h3 class="movie_title">${item.title}</h3>
 									<p class="movie_desc">${item.description}</p>
-									<button class="book_tickets">Book Tickets</button>
+									<a href="booking.php?id=${item.movie_id}"><button class="book_tickets">Book Tickets</button></a>
 								</div>
 								<div class="movie_timings">
 									<h5 class="movietimings_title">Timings</h5>
