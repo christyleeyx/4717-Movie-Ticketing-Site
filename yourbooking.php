@@ -33,36 +33,36 @@ exit;
 ?>
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width" , initial-scale="1.0">
-	<link rel="stylesheet" href="style.css">
-	<script src="index.js"></script>
-	<script src="https://kit.fontawesome.com/d4fd6bf7f6.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width" , initial-scale="1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+  <script src="https://kit.fontawesome.com/d4fd6bf7f6.js" crossorigin="anonymous"></script>
 
-	<header>
-		<a href="index.html" class="logo">
-			<i class="fa-solid fa-meteor fa-xl mainiconcolor"></i>
-			<!-- <img src="weblogo.png" class="weblogo" /> -->
-			METEOR<span>MOVIES</span>
-		</a>
-		<b class="topnav">
-			<a href="index.html">Home</a>
-			<a class="active" href="checkbooking.html">Check Booking</a>
-			<a href="location.html">Location</a>
-		</b>
-		<a href="cart.html">
-			<img src="cart.png" class="weblogo" />
-		</a>
-	</header>
+  <header>
+    <a href="index.html" class="logo">
+      <i class="fa-solid fa-meteor fa-xl mainiconcolor"></i>
+      <!-- <img src="weblogo.png" class="weblogo" /> -->
+      METEOR<span>MOVIES</span>
+    </a>
+    <b class="topnav">
+      <a href="index.html">Home</a>
+      <a class="active" href="checkbooking.html">Check Booking</a>
+      <a href="location.html">Location</a>
+    </b>
+    <a href="cart.html">
+      <img src="cart.png" class="weblogo" />
+    </a>
+  </header>
 </head>
 
 <body>
-	<div id="contentCont">
-		<h2>
-			<br>Your Bookings:<br>
-		</h2>
-		<?php 
+  <div id="contentCont">
+    <h2>
+      <br>Your Bookings:<br>
+    </h2>
+    <?php 
 			$sqlcus = "SELECT uname, email, phone FROM customer";
 		
 			if (!$result = mysqli_query($conn, $sqlcus)) 
@@ -84,21 +84,34 @@ exit;
 			} else {
 			echo "0 results";
 			}
+			// movietitle, showdate, showtime, showseats
 
-			$queryuserid = "SELECT user_ID FROM `orders` WHERE (phone='$phone')";
-		    $queryorder = "SELECT mv.title, sh.showdate, sh.showtiming, ss.seat
+			// $queryuserid = "SELECT user_ID FROM `orders` WHERE (phone='$phone')";
+			// $userId = mysqli_query($conn, $queryuserid);
+
+			// print_r($userId);
+		  $queryorder = "SELECT mv.title, sh.showdate, sh.showtiming, ss.seat
 			FROM `shows` sh
-			INNER JOIN ( SELECT show_ID FROM `order` WHERE user_ID=$queryuserid ) o
+			INNER JOIN ( SELECT show_ID FROM `orders` WHERE phone='$phone' ) o
 			  ON sh.show_ID = o.show_ID
 			INNER JOIN `movie` mv
 			  ON sh.movie_ID = mv.movie_ID
 			INNER JOIN `show_seat` ss
-			  ON sh.show_Id = ss.show_ID
+			  ON sh.show_ID = ss.show_ID
 			";
+
+		  // $queryorder = "SELECT mv.title, sh.showdate, sh.showtiming
+			// FROM `shows` sh
+			// INNER JOIN ( SELECT show_ID FROM `order` WHERE phone='$phone' ) o
+			//   ON sh.show_ID = o.show_ID
+			// INNER JOIN `movie` mv
+			//   -- ON sh.movie_ID = mv.movie_ID
+			// 	";
 			
 			$resultorder = mysqli_query($conn, $queryorder);
 			$bookings = mysqli_fetch_all($resultorder, MYSQLI_ASSOC);
 			mysqli_free_result($resultorder);
+			print_r($bookings);
 	
 			// $sqlord = "SELECT uname, email, phone FROM orders";
 		
@@ -121,9 +134,9 @@ exit;
 
 			?>
 
-			</div>
-        </div>
-   </div>
+  </div>
+  </div>
+  </div>
 </body>
 
 </html>
