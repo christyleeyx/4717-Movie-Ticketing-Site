@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 12, 2022 at 05:38 PM
--- Server version: 8.0.29-0ubuntu0.20.04.3
--- PHP Version: 7.4.3
+-- Host: 127.0.0.1
+-- Generation Time: Nov 01, 2022 at 10:39 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,27 +18,113 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tutorials`
+-- Database: `movies`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Table structure for table `customer`
 --
+
+CREATE TABLE `customer` (
+  `user_ID` int(10) UNSIGNED NOT NULL,
+  `uname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 CREATE TABLE `movies` (
-  `movie_id` int NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `movie_id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `imdb rating` float NOT NULL,
-  `description` text NOT NULL,
-  `genre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `genre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `orders` (
+  `order_no` int(10) UNSIGNED NOT NULL,
+  `user_ID` int(10) UNSIGNED NOT NULL,
+  `uname` varchar(50) NOT NULL,
+  `phone` varchar(8) NOT NULL,
+  `show_ID` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `shows` (
+  `show_ID` int(10) UNSIGNED NOT NULL,
+  `showdate` date NOT NULL,
+  `showtiming` varchar(8) NOT NULL,
+  `movie_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `show_seat` (
+  `show_seat_ID` int(10) UNSIGNED NOT NULL,
+  `show_ID` int(10) UNSIGNED NOT NULL,
+  `seat` varchar(8) NOT NULL,
+  `order_no` int(10) UNSIGNED NOT NULL,
+  `seatstatus` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`user_ID`),
+  ADD UNIQUE KEY `phone` (`phone`);
+
+ALTER TABLE `movies`
+  ADD PRIMARY KEY (`movie_id`);
+
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_no`),
+  ADD UNIQUE KEY `phone` (`phone`),
+  ADD KEY `user_ID` (`user_ID`),
+  ADD KEY `show_ID` (`show_ID`);
+
+ALTER TABLE `shows`
+  ADD PRIMARY KEY (`show_ID`),
+  ADD KEY `movie_id` (`movie_id`);
+
+ALTER TABLE `show_seat`
+  ADD PRIMARY KEY (`show_seat_ID`),
+  ADD KEY `show_ID` (`show_ID`);
+
+ALTER TABLE `movies`
+  MODIFY `movie_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `customer`
+  MODIFY `user_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `orders`
+  MODIFY `order_no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `shows`
+  MODIFY `show_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `show_seat`
+  MODIFY `show_seat_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Dumping data for table `products`
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `customer` (`user_ID`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`show_ID`) REFERENCES `shows` (`show_ID`);
+
 --
+-- Constraints for table `shows`
+--
+ALTER TABLE `shows`
+  ADD CONSTRAINT `shows_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`movie_id`);
+
+--
+-- Constraints for table `show_seat`
+--
+ALTER TABLE `show_seat`
+  ADD CONSTRAINT `show_seat_ibfk_1` FOREIGN KEY (`show_ID`) REFERENCES `shows` (`show_ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 INSERT INTO `movies` (`movie_id`, `image`, `title`, `imdb rating`, `description`, `genre`) VALUES
 (1, 'assets/posters/20th century girl.jpg', '20th Century Girl', 7.3, 'In 1999, a teen with a heart of gold begins keeping close tabs on a popular classmate as a favor to her smitten best friend', 
@@ -65,26 +150,13 @@ INSERT INTO `movies` (`movie_id`, `image`, `title`, `imdb rating`, `description`
 (11, 'assets/posters/wendell and wild.jpg', 'Wendell and Wild', 6.7, 'Two scheming demon brothers, Wendell and Wild, enlist the aid of 13-year-old Kat Elliot to summon them to the Land of the Living.', 
     'animation' );
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `products`
---
-ALTER TABLE `movies`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `movies`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-COMMIT;
+-- --
+-- ALTER TABLE `movies`
+--   ADD PRIMARY KEY (`id`);
+-- --
+-- ALTER TABLE `movies`
+--   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,4 +1,4 @@
-<!-- Reference for structure, to be deleted later -->
+<!-- original frame, echo is not working with the bottom side somehow -->
 
 <head>
 	<meta charset="utf-8">

@@ -7,29 +7,6 @@ if (mysqli_connect_errno()) {
 echo 'Error: Could not connect to database.  Please try again later.';
 exit;
 }
-
-// while ($row = $result->fetch_assoc()){
-// 	$sales[] = $row;
-// }
-// $javaPrice = $sales[0]['totalPrice'];
-// $singleCPrice=$sales[1]['totalPrice'];
-// $doubleCPrice=$sales[2]['totalPrice'];
-// $singleEPrice=$sales[3]['totalPrice'];
-// $doubleEPrice=$sales[4]['totalPrice'];
-
-// $javaQty = $sales[0]['productQty'];
-// $singleCQty=$sales[1]['productQty'];
-// $doubleCQty=$sales[2]['productQty'];
-// $singleEQty=$sales[3]['productQty'];
-// $doubleEQty=$sales[4]['productQty'];
-
-// $sql = "SELECT productName, productCategory FROM totalsales ORDER BY totalPrice desc limit 0,1";
-// if (!$result = mysqli_query($conn, $sql)) { echo "Failed to retrieve movie info". mysqli_error($conn); }
-// $row = $result->fetch_array();
-// $best=$row['productName'];
-// $popular=$row['productCategory'];
-
-
 ?>
 
 <head>
@@ -84,15 +61,9 @@ exit;
 			} else {
 			echo "0 results";
 			}
-			// movietitle, showdate, showtime, showseats
-
-			// $queryuserid = "SELECT user_ID FROM `orders` WHERE (phone='$phone')";
-			// $userId = mysqli_query($conn, $queryuserid);
-
-			// print_r($userId);
 		  $queryorder = "SELECT mv.title, sh.showdate, sh.showtiming, ss.seat
 			FROM `shows` sh
-			INNER JOIN ( SELECT show_ID FROM `orders` WHERE phone='$phone' ) o
+			INNER JOIN ( SELECT show_ID FROM `orders` WHERE phone='87654321' ) o
 			  ON sh.show_ID = o.show_ID
 			INNER JOIN `movie` mv
 			  ON sh.movie_ID = mv.movie_ID
@@ -100,37 +71,21 @@ exit;
 			  ON sh.show_ID = ss.show_ID
 			";
 
-		  // $queryorder = "SELECT mv.title, sh.showdate, sh.showtiming
-			// FROM `shows` sh
-			// INNER JOIN ( SELECT show_ID FROM `order` WHERE phone='$phone' ) o
-			//   ON sh.show_ID = o.show_ID
-			// INNER JOIN `movie` mv
-			//   -- ON sh.movie_ID = mv.movie_ID
-			// 	";
-			
 			$resultorder = mysqli_query($conn, $queryorder);
 			$bookings = mysqli_fetch_all($resultorder, MYSQLI_ASSOC);
 			mysqli_free_result($resultorder);
-			print_r($bookings);
-	
-			// $sqlord = "SELECT uname, email, phone FROM orders";
-		
-			// if (!$result2 = mysqli_query($conn, $sqlord)) 
-			// 	{ echo "Failed to retrieve information". mysqli_error($conn); }
-			// $result2 = $conn->query($sqlord);
-			// $phone = $_POST['phone'];
-			// if ($result->num_rows > 0) {
-			// // output data of each row
-			// 	while($row = $result->fetch_assoc()) {
-			// 		if ($phone == $row["phone"]) 
 
 
-			// $sqlcustorder = "SELECT orders.OrderID, Customers.CustomerName, Shippers.ShipperName
-			// FROM ((Orders
-			// INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
-			// INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+							
+			foreach($bookings as $booking) {
+				echo "<h3>	Movie title: " . $booking["title"]. " <br> 
+							Date: " . $booking["showdate"]. "<br> 
+							Showtime: " . $booking["showtiming"]. " <br>
+							Seats: " . $booking["seat"]. " 
+						</h3> ";
 
-			$conn -> close();	
+			}
+			$conn -> close();
 
 			?>
 
