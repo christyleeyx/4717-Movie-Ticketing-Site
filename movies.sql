@@ -54,11 +54,18 @@ CREATE TABLE `orders` (
   `show_ID` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `shows` (
-  `show_ID` int(10) UNSIGNED NOT NULL,
-  `showdate` date NOT NULL,
-  `showtiming` varchar(8) NOT NULL,
-  `movie_id` int(10) UNSIGNED NOT NULL
+CREATE TABLE `orders` (
+  `orderID` varchar(50) NOT NULL,
+  `cust_name` varchar(50) NOT NULL,
+  `bookingTheatre` varchar(50) NOT NULL,
+  `bookingType` varchar(50) NOT NULL,
+  `bookingDate` varchar(50) NOT NULL, 
+  `bookingTime` varchar(50) NOT NULL,
+  `bookingSeats` varchar(50) NOT NULL,
+  `movie_id` int(10) UNSIGNED NOT NULL,
+  `bookingMobile`int(8) NOT NULL,
+  `bookingEmail` varchar(50) NOT NULL,
+  `bookingAmount` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `show_seat` (

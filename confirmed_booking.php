@@ -1,38 +1,52 @@
 <?php
 include "connection.php";
 session_start();
+
+// from post
 $movie_id = $_POST['movie_id'];
-$fname = $_POST['fName'];
-$lname = $_POST['lName'];
+$cust_name = $_POST['cust_name'];
 $email = $_POST['email'];
-$mobile = $_POST['pNumber'];
-$amt = $_POST['pNumber'];
-//conditions
+$mobile = $_POST['mobile'];
+$order_id = $_POST['ORDERID'];
+$booking_amt = $_POST['AMOUNT'];
+$bookingTheatre = $_POST['bookingTheatre'];
+$bookingType = $_POST['bookingType'];
+$bookingTime = $_POST['bookingTime'];
+$bookingDate = $_POST['bookingDate'];
+$bookingSeats = $_POST['bookingSeats'];
+
 if ((!$_POST['submit'])) {
     echo "<script>alert('You are Not Suppose to come Here Directly');window.location.href='index.php';</script>";
 }
 
-// if (isset($_POST['submit'])) {
-//     $result = mysqli_query($con, $qry);
-// }
+if (isset($_POST['submit'])) {
+
+    $sql = "INSERT INTO orders(`orderID`, `cust_name`, `bookingTheatre`, `bookingType`,  `bookingDate`, `bookingTime`, `bookingSeats`, `movie_id`, `bookingMobile`, `bookingEmail`, `bookingAmount`)
+    VALUES ('$order_id', '$cust_name', '$bookingTheatre', '$bookingType', '$bookingDate', '$bookingTime', '$bookingSeats', '$movie_id', '$mobile', '$email', '$booking_amt')";
+
+    $result = mysqli_query($con, $sql);
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <?php
 include "connection.php";
-$orderQuery = "SELECT * FROM temp_bookingtable WHERE temp_index=1";
-$result = mysqli_query($con, $orderQuery);
-$row = mysqli_fetch_assoc($result);
-$type = $row['bookingtype'];
-$theatre = $row['bookingtheatre'];
-$time = $row['bookingtime'];
-$date = $row['bookingdate'];
-$ORDERID = $row['ORDERID'];
 
-$movieQuery = "SELECT * FROM movies WHERE movie_id=$movie_id";
-$movie_result = mysqli_query($con, $movieQuery);
-$movie_row = mysqli_fetch_assoc($movie_result);
+   // from databases
+   $orderQuery = "SELECT * FROM temp_bookingtable WHERE temp_index=1";
+   $order_result = mysqli_query($con, $orderQuery);
+   $row = mysqli_fetch_assoc($order_result);
+
+   $movieQuery = "SELECT * FROM movies WHERE movie_id=$movie_id";
+   $movie_result = mysqli_query($con, $movieQuery);
+   $movie_row = mysqli_fetch_assoc($movie_result);
+
+   $bookingTheatre = $row['bookingtheatre'];
+   $bookingType = $row['bookingtype'];
+   $bookingTime = $row['bookingtime'];
+   $bookingDate = $row['bookingdate'];
+
 // print_R($row);
 ?>
 
@@ -53,8 +67,8 @@ $movie_row = mysqli_fetch_assoc($movie_result);
     <div class="booking-panel-section booking-panel-section1">
       <h1>BOOK YOUR TICKETS</h1>
     </div>
-    <div class="booking-panel-section booking-panel-section2" onclick="window.history.go(-1); return false;">
-        <i class="fas fa-2x fa-arrow-left"></i>
+    <div class="booking-panel-section booking-panel-section2" onclick="window.history.go(-5); return false;">
+        <i class="fas fa-2x fa-times"></i>
     </div>
     <div class="booking-panel-section booking-panel-section3">
       <div class="movie-box">
@@ -67,7 +81,7 @@ $movie_row = mysqli_fetch_assoc($movie_result);
         <div class="title"><img src = "assets/steps/3.png" width=50%></div>
     
         <div id="wrapper" class="seat-form-container">
-            <form method="post" action="confirmed_booking.php">
+            <form method="post" action="pgRedirect.php">
                 <table border="1" style="text-align: center;">
                     <tbody>
                         <tr>
@@ -86,7 +100,7 @@ $movie_row = mysqli_fetch_assoc($movie_result);
                         <tr>
                             <td>2</td>
                             <td><label>Name</label></td>
-                            <td><?php echo $_POST['fName'] . " " . $_POST['lName']; ?></td>
+                            <td><?php echo $cust_name; ?></td>
                         </tr>
                         
                         <tr>
@@ -106,7 +120,7 @@ $movie_row = mysqli_fetch_assoc($movie_result);
                             <td>5</td>
                             <td><label>Theatre</label></td>
                             <td>
-                                <?php echo $row['bookingtheatre']; ?>
+                                <?php echo $bookingTheatre; ?>
                             </td>
                         </tr>
 
@@ -114,7 +128,7 @@ $movie_row = mysqli_fetch_assoc($movie_result);
                             <td>6</td>
                             <td><label>Type</label></td>
                             <td>
-                                <?php echo $row['bookingtype']; ?>
+                                <?php echo $bookingType; ?>
                             </td>
                         </tr>
 
@@ -122,54 +136,22 @@ $movie_row = mysqli_fetch_assoc($movie_result);
                             <td>7</td>
                             <td><label>Time</label></td>
                             <td>
-                                <?php echo $row['bookingtime']; ?>
+                                <?php echo $bookingTime; ?>
                             </td>
                         </tr>
 
 
                         <tr>
                             <td>8</td>
-                            <td><label>Amount*</label></td>
+                            <td><label>Amount</label></td>
                             <td>
-                                <?php
-                                if ($type == "2d") {
-                                    $amt = 10.0;
-                                }
-                                if ($type == "3d") {
-                                    $amt = 13.50 ;
-                                }
-                                if ($type == "imax") {
-                                    $amt = 18.0;
-                                }
-
-                                ?>
-
-                                <input type="text" name="AMOUNT" value="<?php echo $amt; ?>" readonly>
-                                <input type="hidden" name="ORDERID" value="<?php echo $row['ORDERID']; ?>">
-                                <input type="hidden" name="movie_id" value="<?php echo $movie_id; ?>">
-                                <input type="hidden" name="cust_name" value="<?php echo $_POST['fName'] . " " . $_POST['lName']; ?>">
-                                <input type="hidden" name="email" value="<?php echo $email; ?>">
-                                <input type="hidden" name="mobile" value="<?php echo $mobile; ?>">
-                                <input type="hidden" name="bookingType" value="<?php echo $type; ?>">
-                                <input type="hidden" name="bookingTime" value="<?php echo $time; ?>">
-                                <input type="hidden" name="bookingTheatre" value="<?php echo $theatre; ?>">
-                                <input type="hidden" name="bookingDate" value="<?php echo $date; ?>">
-                                <input type="hidden" name="bookingSeats" value="A12, A13">
-
-
-
-
+                                <?php echo $booking_amt; ?>
                             </td>
                         </tr>
 
-
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button value="Book Now!" type="submit" name="submit" type="button" class="form-btn">Confirm!</button>
-                                <!-- <input value="CheckOut" type="submit"	onclick=""></td> -->
-                        </tr>
+                            <td colspan="3">Your booking is confirmed! An email with your order ID has been sent!</td>
+                        </tr>   
                     </tbody>
                 </table>
                 * - Mandatory Fields

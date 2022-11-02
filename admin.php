@@ -30,8 +30,11 @@
         if (isset($_POST['genre'])) {
             $genre = mysqli_real_escape_string($con, $_POST['genre']);
         }
+        if (isset($_POST['trailer'])) {
+          $trailer = mysqli_real_escape_string($con, $_POST['trailer']);
+      }
 
-        $query = "INSERT INTO `movies` (title, image, `imdb rating`, description, genre) values ('$title', '$image', '$imdb_rating', '$description', '$genre')"; 
+        $query = "INSERT INTO movies(`title`, `image`, `imdb rating`, `description`, `genre`, `trailer`) VALUES ('$title', '$image', '$imdb_rating', '$description', '$genre', '$trailer')"; 
         mysqli_query($con, $query);
         echo '<script type="text/javascript">';
         echo 'alert("Movie Created")';
@@ -106,6 +109,10 @@
         <label for="genre"><span>*</span>Genre:</label>
         <input type="text" id="genre" name="genre" placeholder="genre" required />
       </div>
+      <div class="input-container">
+        <label for="trailer"><span>*</span>Trailer:</label>
+        <input type="text" id="" name="trailer" placeholder="trailer" required />
+      </div>
       <input type="submit" class="create-button" name="createMovie" value="Create Movie">
     </form>
     
@@ -137,6 +144,62 @@
       </div>
       <input type="submit" class="create-button" name="createShow" value="Create Show">
     </form>
+
+    <h1>Bookings</h1>
+    <?php
+      $user = 'root';
+      $password = '';
+ 
+      // Database name 
+      $database = 'orders';
+      $servername='localhost';
+      $mysqli = new mysqli($servername, $user,
+                $password, $database);
+ 
+      // Checking for connections
+      if ($mysqli->connect_error) {
+          die('Connect Error (' .
+          $mysqli->connect_errno . ') '.
+          $mysqli->connect_error);
+      }
+ 
+      // SQL query 
+      $sql = " SELECT * FROM orders ORDER BY movie_id ASC ";
+      $result = $mysqli->query($sql);
+      $mysqli->close();
+      ?>
+      <!-- HTML code -->
+      <div>
+        <!-- TABLE -->
+        <table>
+            <tr>
+                <th>GFG UserHandle</th>
+                <th>Practice Problems</th>
+                <th>Coding Score</th>
+                <th>GFG Articles</th>
+            </tr>
+            <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+            <?php
+                // LOOP TILL END OF DATA
+                while($rows=$result->fetch_assoc())
+                {
+            ?>
+            <tr>
+                <!-- FETCHING DATA FROM EACH
+                    ROW OF EVERY COLUMN -->
+                <td><?php echo $rows['username'];?></td>
+                <td><?php echo $rows['problems'];?></td>
+                <td><?php echo $rows['score'];?></td>
+                <td><?php echo $rows['articles'];?></td>
+            </tr>
+            <?php
+                }
+            ?>
+        </table>
+    </section>
+</body>
+ 
+</html>
   </div>
 </body>
 
