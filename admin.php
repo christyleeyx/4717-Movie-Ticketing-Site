@@ -1,5 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+        table {
+            margin: 0 auto;
+            font-size: large;
+            border: 1px solid black;
+        }
+ 
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: xx-large;
+            font-family: 'Poppins', 'sans-serif';
+        }
+ 
+        td {
+            background-color: black;
+            border: 1px solid black;
+        }
+ 
+        th,
+        td {
+            font-weight: bold;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+ 
+        td {
+            font-weight: lighter;
+        }
+</style>
 
 <head>
         <meta charset="utf-8">
@@ -151,7 +182,7 @@
       $password = '';
  
       // Database name 
-      $database = 'orders';
+      $database = 'movies';
       $servername='localhost';
       $mysqli = new mysqli($servername, $user,
                 $password, $database);
@@ -173,10 +204,17 @@
         <!-- TABLE -->
         <table>
             <tr>
-                <th>GFG UserHandle</th>
-                <th>Practice Problems</th>
-                <th>Coding Score</th>
-                <th>GFG Articles</th>
+                <th>orderID</th>
+                <th>cust_name</th>
+                <th>Theatre</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Seats Booked</th>
+                <th>Movie ID</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Amount</th>
             </tr>
             <!-- PHP CODE TO FETCH DATA FROM ROWS -->
             <?php
@@ -187,19 +225,23 @@
             <tr>
                 <!-- FETCHING DATA FROM EACH
                     ROW OF EVERY COLUMN -->
-                <td><?php echo $rows['username'];?></td>
-                <td><?php echo $rows['problems'];?></td>
-                <td><?php echo $rows['score'];?></td>
-                <td><?php echo $rows['articles'];?></td>
+                <td><?php echo $rows['orderID'];?></td>
+                <td><?php echo $rows['cust_name'];?></td>
+                <td><?php echo $rows['bookingTheatre'];?></td>
+                <td><?php echo $rows['bookingType'];?></td>
+                <td><?php echo $rows['bookingDate'];?></td>
+                <td><?php echo $rows['bookingTime'];?></td>
+                <td><?php echo $rows['bookingSeats'];?></td>
+                <td><?php echo $rows['movie_id'];?></td>
+                <td><?php echo $rows['bookingMobile'];?></td>
+                <td><?php echo $rows['bookingEmail'];?></td>
+                <td><?php echo $rows['bookingAmount'];?></td>
             </tr>
             <?php
                 }
             ?>
         </table>
-    </section>
-</body>
- 
-</html>
+      </div>         
   </div>
 </body>
 
